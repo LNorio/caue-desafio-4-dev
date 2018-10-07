@@ -1,0 +1,303 @@
+/* CSS Document */
+
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0); 
+}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background-image: url("../img/imgtopbot.jpg");
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    min-width: 600px;
+    min-height: 600px;
+}
+
+#top{
+    background-attachment: local;
+    background-size: cover;
+    width: 100%;
+    height: 100px;
+    padding-top: 2%; 
+    min-width: initial;
+}
+
+#top h1{
+    font-size: 40px;
+    padding-bottom: 4%;
+}
+
+#init{
+    background-image: url("../img/bgtelainit.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 90%;
+}
+
+#init table{
+    width: 100%;
+    height: 80%;
+    border: 40px solid rgba(255, 255, 255, 0);
+}
+
+#init #divavaliacoes{
+    background-color: rgba(0, 0, 0, 0.74);
+    width: 50%;
+    border-radius: 9%;
+    box-shadow: 1px 1px 1px black;
+}
+
+#init #divcadastros{
+    background-color: rgba(0, 0, 0, 0.74);
+    background-size: contain;
+    width: 50%;
+    border-radius: 9%;
+    box-shadow: 1px 1px 1px black;
+}
+
+#init a{
+    text-decoration: none;
+}
+
+#init h2{
+    font-size: 36px;    
+    padding-top: 33%;
+    padding-bottom: 35%;
+}
+
+#init #divavaliacoes:hover{
+    opacity: 0.8;
+}
+
+#init #divcadastros:hover{
+    opacity: 0.8;
+}
+
+#init h2:hover{
+    color: rgb(0, 0, 0);
+}
+
+#avali{
+    background-image: url("../img/bgtelainit.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 90%;
+    display: none;
+    padding-bottom: 6%;
+}
+
+#avali #voltaravaliacao{
+    color: white;
+    padding: 1% 5%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    border: 1px solid rgba(211, 199, 255, 0.719);
+    font-size: 36px;
+    background-color: rgba(0, 0, 0, 0.74);
+    border-radius: 7%;
+}
+
+#avali #voltaravaliacao:hover{
+    color: rgb(0, 0, 0);
+    opacity: 0.8;
+}
+
+#avali table{
+    width: 100%;
+    height: 90%;
+    border: 40px solid rgba(255, 255, 255, 0);
+}
+
+#avali #respavaliacao{
+    background-color: rgba(0, 0, 0, 0.74);
+    width: 50%;
+    border-radius: 9%;
+    box-shadow: 1px 1px 1px black;
+}
+
+#avali #veravaliacao{
+    background-color: rgba(0, 0, 0, 0.74);
+    background-size: contain;
+    width: 50%;
+    border-radius: 9%;
+    box-shadow: 1px 1px 1px black;
+}
+
+#avali a{
+    text-decoration: none;
+}
+
+#avali h2{
+    font-size: 36px;    
+    padding-top: 33%;
+    padding-bottom: 35%;
+}
+
+#avali #respavaliacao:hover{
+    opacity: 0.8;
+}
+
+#avali #veravaliacao:hover{
+    opacity: 0.8;
+}
+
+#avali h2:hover{
+    color: rgb(0, 0, 0);
+}
+
+#mid{
+    background-image: url("../img/bgtelainit.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 90%;
+    display: none;
+    padding-bottom: 6%;
+}
+
+#mid #voltarmid{
+    color: white;
+    padding: 1% 5%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    border: 1px solid rgba(211, 199, 255, 0.719);
+    font-size: 36px;
+    background-color: rgba(0, 0, 0, 0.74);
+    border-radius: 7%;
+}
+
+#mid #voltarmid:hover{
+    color: rgb(0, 0, 0);
+    opacity: 0.8;
+}
+
+#mid table{
+    width: 100%;
+    height: 90%;
+    border: 40px solid rgba(255, 255, 255, 0);
+}
+
+#mid #divavaliacao{
+    background-color: rgba(0, 0, 0, 0.74);
+    width: 50%;
+    border-radius: 9%;
+    box-shadow: 1px 1px 1px black;
+}
+
+#mid #divcliente{
+    background-color: rgba(0, 0, 0, 0.74);
+    background-size: contain;
+    width: 50%;
+    border-radius: 9%;
+    box-shadow: 1px 1px 1px black;
+}
+
+#mid a{
+    text-decoration: none;
+}
+
+#mid h2{
+    font-size: 36px;    
+    padding-top: 33%;
+    padding-bottom: 35%;
+}
+
+#mid h2:hover{
+    color: rgb(0, 0, 0);
+}
+
+#mid #divavaliacao:hover{
+    opacity: 0.8;
+}
+
+#mid #divcliente:hover{
+    opacity: 0.8;
+}
+
+#cadcliente{
+    background-image: url("../img/bgtelainit.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 90%;
+    display: none;
+    padding-bottom: 8%;
+}
+
+#cadcliente h2{
+    font-size: 36px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#cadcliente form {
+    font-size: 28px;
+}
+
+#cadcliente input {
+    color: white;
+    padding: 1% 5%;
+    font-size: 20px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: rgba(99, 99, 99, 0.456);
+    border: 1px solid rgba(211, 199, 255, 0.719);
+}
+
+#cadavaliacao{
+    display: none;
+}
+
+#fot{
+    width: 100%;
+    height: 20%;
+    background-attachment: local;
+    background-size: cover; 
+    min-width: initial;
+    margin-top: 5%;
+}
+
+#fot h2{
+    padding-bottom: 16px; 
+}
+
+#fot table{
+    width: 100%;
+}
+
+#sobre{
+    width: 33%;
+}
+
+#contato{
+    width: 34%;
+}
+
+#redessociais{
+    width: 33%;
+}
+
+ #fot li{
+    list-style-type: none;
+}
+
+#fot li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+#fot li a:hover{
+    opacity: 0.5;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Sistema de Avaliação</title>
+        <link rel="icon" href="./img/indexicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+        <script src="js/main.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ 
+        <script> 
+        $(document).ready(function(){
+        $("#divavaliacao").click(function(){
+        $("#mid").slideToggle(170);
+        $("#cadavaliacao").slideToggle(170);
+        });
+        });
+
+        $(document).ready(function(){
+        $("#divcliente").click(function(){
+        $("#mid").slideToggle(170);
+        $("#cadcliente").slideToggle(170);
+        });
+        });
+
+        $(document).ready(function(){
+        $("#cancelarcad").click(function(){
+        $("#cadcliente").slideToggle(170);
+        $("#mid").slideToggle(170);
+        });
+        });
+
+        $(document).ready(function(){
+        $("#divcadastros").click(function(){
+        $("#init").slideToggle(170);
+        $("#mid").slideToggle(170);
+        });
+        });
+
+        $(document).ready(function(){
+        $("#voltarmid").click(function(){
+        $("#mid").slideToggle(170);
+        $("#init").slideToggle(170);
+        });
+        });
+
+        $(document).ready(function(){
+        $("#voltaravaliacao").click(function(){
+        $("#avali").slideToggle(170);
+        $("#init").slideToggle(170);
+        });
+        });
+
+        $(document).ready(function(){
+        $("#divavaliacoes").click(function(){
+        $("#init").slideToggle(170);
+        $("#avali").slideToggle(170);
+        });
+        });
+        </script>
+    </head>
+        
+    <body>
+        <div id="top">
+            <h1>Avaliação de Serviço</h1>
+        </div>
+        
+        <div id="init">
+                <table>
+                    <tr>
+                        <td id="divavaliacoes"><a href="#avali, #top">
+                            <h2>Avaliações</h2>
+                        </a></td>
+                                        
+                        <td id="divcadastros"><a href="#mid, #top">
+                        <h2>Cadatros</h2>
+                    </a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="avali">
+            <table>
+                <tr>
+                    <td id="respavaliacao"><a href="#, #top">
+                        <h2>Responder Avaliação</h2>
+                    </a></td>
+                                    
+                    <td id="veravaliacao"><a href="#, #top">
+                        <h2>Resultado Avaliações</h2>
+                    </a></td>
+                </tr>
+            </table>
+            <input id="voltaravaliacao" type="button" src="#init" value="Voltar">
+        </div>
+
+        <div id="mid">
+            <table>
+                <tr>
+                    <td id="divavaliacao"><a href="#cadavaliacao">
+                        <h2>Cadatro Avaliação</h2>
+                    </a></td>
+                                
+                    <td id="divcliente"><a href="#cadcliente">
+                        <h2>Cadatro Cliente</h2>
+                    </a></td>
+                </tr>
+            </table>
+            <input id="voltarmid" type="button" src="#init" value="Voltar">
+        </div>
+
+        <div id="cadcliente">
+            <h2>Cadastro Cliente</h2>
+            <form><b>
+                Nome do Cliente:
+                <input type="text" id="cnomecliente" name="cnomecliente" size="30" placeholder="Nome Cliente" required><br>
+                Nome do Contato:
+                <input type="text" id="cnomecontato" name="cnomecontato" size="30" placeholder="Nome Contato" required><br>
+                <input id="cancelarcad" type="button" src="#mid" value="Cancelar">
+                <input type="submit" onclick="" value="Cadastrar-se">
+            </b></form>
+        </div>
+
+        <div id="cadavaliacao">
+            Cadastro Avaliação
+        </div>
+        
+        <div id="fot">
+            <table>
+                <tr>
+                    <td id="sobre">
+                        <h2>Sobre:</h2>
+                        <p>Site desenvolvido com o propósito de avaliar nossos serviços prestados, com o feedback de clientes, ajudando-nos a melhorar sempre.</p>
+                    </td>
+                            
+                    <td id="contato">
+                        <h2>Contato:</h2>
+                        Cauê<br>
+                        (11)96498-8447<br>
+                        cauenogueira@alunos.utfpr.edu.br<br>
+                    </td>
+        
+                    <td id="redessociais">
+                        <h2>Redes Sociais:</h2>
+                            
+                        <li><a href="https://www.facebook.com/"><img src="./img/facebooklogo.png" alt="logo-facebook" style="width:20px; height:20px"> Facebook</a></li>
+        
+                        <li><a href="https://www.instagram.com/"><img src="./img/instagramlogo.png" alt="logo-instagram" style="width:20px; height:20px"> Instagram</a></li>
+                                    
+                        <li><a href="https://twitter.com/"><img src="./img/twitterlogo.png" alt="logo-twitter" style="width:20px; height:20px"> Twitter</a></li>
+                                
+                        <li><a href="https://www.youtube.com/"><img src="./img/youtubelogo.png" alt="logo-youtube" style="width:20px; height:20px"> Youtube</a></li>
+                    </td>
+                 </tr>
+            </table>
+        </div>
+    </body>
+</html>
