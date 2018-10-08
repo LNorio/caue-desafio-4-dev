@@ -6,8 +6,8 @@
         <title>Sistema de Avaliação</title>
         <link rel="icon" href="./img/indexicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
-        <script src="js/main.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="./css/styles.css" />
+        <script src="./js/main.js"></script>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
  
         <script> 
@@ -75,7 +75,7 @@
                         </a></td>
                                         
                         <td id="divcadastros"><a href="#mid, #top">
-                        <h2>Cadatros</h2>
+                        <h2>Cadastros</h2>
                     </a></td>
                 </tr>
             </table>
@@ -93,22 +93,22 @@
                     </a></td>
                 </tr>
             </table>
-            <input id="voltaravaliacao" type="button" src="#init" value="Voltar">
+            <input id="voltaravaliacao" type="button" src="#init, #top" value="Voltar">
         </div>
 
         <div id="mid">
             <table>
                 <tr>
-                    <td id="divavaliacao"><a href="#cadavaliacao">
+                    <td id="divavaliacao"><a href="#cadavaliacao, #top">
                         <h2>Cadatro Avaliação</h2>
                     </a></td>
                                 
-                    <td id="divcliente"><a href="#cadcliente">
+                    <td id="divcliente"><a href="#cadcliente, #top">
                         <h2>Cadatro Cliente</h2>
                     </a></td>
                 </tr>
             </table>
-            <input id="voltarmid" type="button" src="#init" value="Voltar">
+            <input id="voltarmid" type="button" src="#init, #top" value="Voltar">
         </div>
 
         <div id="cadcliente">
@@ -118,8 +118,8 @@
                 <input type="text" id="cnomecliente" name="cnomecliente" size="30" placeholder="Nome Cliente" required><br>
                 Nome do Contato:
                 <input type="text" id="cnomecontato" name="cnomecontato" size="30" placeholder="Nome Contato" required><br>
-                <input id="cancelarcad" type="button" src="#mid" value="Cancelar">
-                <input type="submit" onclick="" value="Cadastrar-se">
+                <input id="cancelarcad" type="button" src="#mid, #top" value="Cancelar">
+                <input type="submit" onclick="cadastrarCliente()" value="Cadastrar-se">
             </b></form>
         </div>
 
@@ -151,10 +151,23 @@
                                     
                         <li><a href="https://twitter.com/"><img src="./img/twitterlogo.png" alt="logo-twitter" style="width:20px; height:20px"> Twitter</a></li>
                                 
-                        <li><a href="https://www.youtube.com/"><img src="./img/youtubelogo.png" alt="logo-youtube" style="width:20px; height:20px"> Youtube</a></li>
+                        <li><a href="https://www.youtube.com/"><img src=".  /img/youtubelogo.png" alt="logo-youtube" style="width:20px; height:20px"> Youtube</a></li>
                     </td>
                  </tr>
             </table>
         </div>
+
+        <script src="./node_modules/firebase/firebase.js"></script>
+        <script>
+            var config = {
+                apiKey: "AIzaSyBX9Tfcxh87_6bQ9wqIH-hn_obSaxomKHc",
+                authDomain: "desafio-forlogic-9cfa2.firebaseapp.com",
+                databaseURL: "https://desafio-forlogic-9cfa2.firebaseio.com",
+                projectId: "desafio-forlogic-9cfa2",
+                storageBucket: "desafio-forlogic-9cfa2.appspot.com",
+                messagingSenderId: "334299970915"
+            };
+            firebase.initializeApp(config);
+        </script>
     </body>
 </html>
