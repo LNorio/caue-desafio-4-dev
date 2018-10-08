@@ -1,0 +1,23 @@
+{
+  "name": "caue-desafio-4-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caueaquino/caue-desafio-4-dev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caueaquino/caue-desafio-4-dev/issues"
+  },
+  "homepage": "https://github.com/caueaquino/caue-desafio-4-dev#readme",
+  "dependencies": {
+    "firebase": "^5.5.3",
+    "http-server": "^0.11.1"
+  }
+}

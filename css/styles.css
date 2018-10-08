@@ -257,7 +257,63 @@ body{
 }
 
 #cadavaliacao{
+    background-image: url("../img/bgtelainit.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 90%;
     display: none;
+    padding-bottom: 8%;
+}
+
+#cadavaliacao h2{
+    font-size: 36px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#cadavaliacao form {
+    font-size: 28px;
+}
+
+#cadavaliacao input {
+    color: white;
+    padding: 1% 5%;
+    font-size: 20px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: rgba(99, 99, 99, 0.456);
+    border: 1px solid rgba(211, 199, 255, 0.719);
+}
+
+#ravaliacao{
+    background-image: url("../img/bgtelainit.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 90%;
+    display: none;
+    padding-bottom: 8%;
+}
+
+#ravaliacao h2{
+    font-size: 36px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#ravaliacao form {
+    font-size: 28px;
+}
+
+#ravaliacao input {
+    color: white;
+    padding: 1% 5%;
+    font-size: 20px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: rgba(99, 99, 99, 0.456);
+    border: 1px solid rgba(211, 199, 255, 0.719);
 }
 
 #fot{
