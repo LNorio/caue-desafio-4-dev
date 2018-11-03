@@ -3,23 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Sistema de avaliação - Cadastro Cliente</title>
-        <link rel="icon" href="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
-        
-        <script src=""></script>
-    </head>
-    
-    <body>
-        <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Sistema de avaliação - Cadastro Cliente</title>
+        <title>Sistema de avaliação - Avaliação</title>
         <link rel="icon" href="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
@@ -30,27 +14,90 @@
     </head>
     
     <body>
-        <h1>Sistema de Avaliação</h1>
+        <h1><strong>Sistema de Avaliação</strong></h1>
         <br>
         
         <div class="col-md-4">
-            <h2>Avaliações:</h2>
+            <h2>Menu de Avaliação:</h2>
             <br>
 
-            <button class="btn btn-lg btn-block btn-primary" onclick="visualizaravaliacao()">Avaliação Atual</button>
+            <button class="btn btn-lg btn-block btn-primary" onclick="loadavaliacao();focusaa();"> Carregar Avaliação Atual</button>
             <button class="btn btn-lg btn-block btn-primary" onclick="geraravaliacao()">Gerar Avaliação</button>
 
-            <a class="button button-clear" href="index.html" onclick="">Voltar para Home</a>
+            <a class="btn btn-lg btn-block btn-primary" href="index.html" onclick="">Voltar</a>
         </div>
 
-
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    </body>
-</html>
+        <br><br>
         
+        <div class="col-md-4">
+                <h2>Avaliação</h2>
+                <br>
+
+                <h3>Informações Avaliação:</h3>
+
+                <table class="tab" id="tabavaliacao">
+                    <tr>
+                        <td>ID:</td>
+                        <td>Data:</td>
+                        <td>NPS:</td>
+                    </tr>
+                    <br>
+                </table>
+                <br><br>
+
+                <h3>Clientes na avaliação:</h3>
+
+                <table class="tab" id="clientesav">
+                    <tr>
+                        <td>ID:</td>
+                        <td>Nome Cliente:</td>
+                        <td>Contato Cliente:</td>
+                        <td>Sinalizador:</td>
+                    </tr>
+                    <br>
+                </table>
+        </div>
+        <br><br>
+
+        <!--modal button avaliar-->
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header"> 
+                  <h4 class="modal-title" id="ModalLabel">Avaliação Cliente</h4>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div id="avaliarc" class="modal-body">
+                    <div class="form-collum">
+                        
+                        <h5>Em uma escala de 0 a 10, qual a probabilidade de você recomendar nosso produto/serviço a um amigo/conhecido?</h5>  
+                        <div class="form-group col-md-6">
+                            <input id="nota" type="number" class="form-control" placeholder="0 - 10">
+                        </div>
+                        <br>
+
+                        <h5>Qual é o motivo dessa nota?</h5>
+                        <div class="form-group col-md-6">
+                            <textarea id="justify" class="form-control" placeholder="Justificativa da Nota"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                  <button type="button" class="btn btn-primary" onclick="saveav()">Salvar Mudanças</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

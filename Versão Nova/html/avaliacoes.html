@@ -1,33 +1,48 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Sistema de avaliação - Tela Inicial</title>
+        <title>Sistema de avaliação - Visualização Avaliações</title>
         <link rel="icon" href="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
         
-        <script src=""></script>
-        <script src="../js/clientejs.js"></script>
+        <script src="../js/avaliacaojs.js"></script>
     </head>
     
     <body>
-        <h1><strong>Bem-Vindo ao Sistema de Avaliação</strong></h1>
+        <h1><strong>Sistema de Avaliação</strong></h1>
         <br>
         
         <div class="col-md-4">
-            <h2>Menu Principal</h2>
+            <h2>Menu Avaliações:</h2>
             <br>
 
-            <a class="btn btn-lg btn-block btn-primary" href="avaliacao.html">Avaliação Atual</a></li>
-            <a class="btn btn-lg btn-block btn-primary" href="avaliacoes.html">Visualizar Avaliações</a></li>
-            <a class="btn btn-lg btn-block btn-primary" href="clientes.html">Visualizar Clientes</a></li>
-            <a class="btn btn-lg btn-block btn-primary" href="cadcliente.html">Cadastrar Cliente</a></li>
+            <button class="btn btn-lg btn-block btn-primary" onclick="loadavaliacoes()">Carregar Lista Avaliações</button>
+
+            <a class="btn btn-lg btn-block btn-primary" href="index.html" onclick="">Voltar</a>
         </div>
+
+        <br><br>
+        
+        <div class="col-md-4">
+                <h2>Lista Avaliação:</h2>
+                <br>
+
+                <table class="tab" id="tabavaliacoes">
+                    <tr>
+                        <td>ID:</td>
+                        <td>Data:</td>
+                        <td>NPS:</td>
+                    </tr>
+                    <br>
+
+                </table>
+        </div>
+        <br>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
