@@ -18,7 +18,7 @@ var cliente={
 //atualiza dados com o banco
 firebase.database().ref('clientes').on('value', function (snapshot) {
     snapshot.forEach(function(item){
-        clientes.push(item);
+        clientes.push(item.val());
     });
 });
 

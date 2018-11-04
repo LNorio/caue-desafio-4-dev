@@ -22,14 +22,14 @@ var avaliacao={
 //atualiza dados cliente com o banco
 firebase.database().ref('clientes').on('value', function (snapshot) {
     snapshot.forEach(function(item){
-        clientes.push(item);
+        clientes.push(item.val());
     });
 });
 
 //atualiza dados avaliacoes com o banco
 firebase.database().ref('avaliacoes').on('value', function (snapshot) {
     snapshot.forEach(function(item){
-        avaliacoes.push(item);
+        avaliacoes.push(item.val());
     });
 });
 
