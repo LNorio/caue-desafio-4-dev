@@ -13,7 +13,14 @@ var cliente={
     datacad: [dat.getMonth(),dat.getFullYear()],
     dataav: [0,0],
     sinalizador: "Nenhum"
-}
+};
+
+//atualiza dados com o banco
+firebase.database().ref('clientes').on('value', function (snapshot) {
+    snapshot.forEach(function(item){
+        clientes.push(item);
+    });
+});
 
 //função para limpar 'inputs' tela cadastro cliente
 function cleanCadClient(){
@@ -21,14 +28,27 @@ function cleanCadClient(){
     document.getElementById("contatoInput").innerText="";
 }
 
+//Função para verificar se contato ja existe
+function verifcontato(){
+    for(var i=0;i<clientes.length;i++){
+        if(clientes[i].contatocliente==document.getElementById("contatoInput").value){
+            return true;
+        }
+    }
+    return false;
+}
+
 //Função para cadastrar um cliente
 function cadCliente(){
+    if(verifcontato()){
+        alert("Nome do Contato ja existe!!!");
 
-    if(document.getElementById("clienteInput").value!="" && document.getElementById("contatoInput").value!=""){
+    }else if(document.getElementById("clienteInput").value!="" && document.getElementById("contatoInput").value!=""){
         cliente.id=clientes.length+1;
         cliente.nomecliente=document.getElementById("clienteInput").value;
         cliente.contatocliente=document.getElementById("contatoInput").value;
-        clientes.push(cliente);
+
+        firebase.database().ref().child('clientes').push(cliente);
         alert("Cadastro Concluído com sucesso!!!");
     }
 }
@@ -50,7 +70,7 @@ function loadClientes(){
             var nomeclientetd=document.createElement("td");
             var contatoclientetd=document.createElement("td");
             var sinalizadortd=document.createElement("td");
-            
+
             idtd.textContent=clientes[i].id;
             nomeclientetd.textContent=clientes[i].nomecliente;
             contatoclientetd.textContent=clientes[i].contatocliente;

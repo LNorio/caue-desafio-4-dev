@@ -8,6 +8,8 @@ var dat=new Date;
 
 var vbt=false;
 
+var xca;
+
 var avaliacao={
     id: 0,
     data: [dat.getMonth(),dat.getFullYear()],
@@ -15,11 +17,44 @@ var avaliacao={
     notas: [],
     comentarios: [],
     nps: 0
-}
+};
+
+//atualiza dados cliente com o banco
+firebase.database().ref('clientes').on('value', function (snapshot) {
+    snapshot.forEach(function(item){
+        clientes.push(item);
+    });
+});
+
+//atualiza dados avaliacoes com o banco
+firebase.database().ref('avaliacoes').on('value', function (snapshot) {
+    snapshot.forEach(function(item){
+        avaliacoes.push(item);
+    });
+});
 
 //Função para calcular NPS
 function calcnps(){
+    var p=0;
+    var promotores=0;
+    var detratores=0;
 
+    for(var i=0;i<avaliacoes[avaliacoes.length-1].clientes.length;i++){
+        if(avaliacoes[avaliacoes.length-1].clientes[i].sinalizador=="Promotores"){
+            promotores++;
+
+        }else if(avaliacoes[avaliacoes.length-1].clientes[i].sinalizador=="Detratores"){
+            detratores++;
+
+        }
+        p++;
+    }
+    avaliacoes[avaliacoes.length-1].nps=((promotores-detratores)/p) * 100;
+}
+
+//Função salva id cliente avaliação
+function catchid(idcliente){
+    xca=idcliente;
 }
 
 //Função para salvar notas e comentarios avaliação
@@ -30,7 +65,28 @@ function saveav(){
     if(a=="" || b==""){
         alert("Campo(s) em branco!!!");
     }else{
-        alert("nota: "+a+" justificativa: "+b);
+        for(var j=0;i<clientes.length;i++){
+            if(clientes[i].id==xca){
+                if(a>=9){
+                    clientes[i].sinalizador="Promotores";
+
+                }else if(a>=7){
+                    clientes[i].sinalizador="Neutros";
+
+                }else{
+                    clientes[i].sinalizador="Detratores";
+                }
+            }
+        }
+        for(var i=0;i<avaliacoes[avaliacoes.length-1].clientes.length;i++){
+            if(avaliacoes[avaliacoes.length-1].clientes[i].id==xca){
+                avaliacoes[avaliacoes.length-1].notas[i]=a;
+                avaliacoes[avaliacoes.length-1].comentarios[i]=b;
+            }
+        }
+        calcnps();
+
+        window.location.reload();
     }
 }
 
@@ -58,7 +114,8 @@ function geraravaliacao(){
                 aux++;
             }
         }
-        avaliacoes.push(avaliacao);
+
+        firebase.database().ref().child('avaliacoes').push(avaliacao);
         alert("Avaliação gerada com sucesso!!!");
     }
 }
@@ -66,10 +123,6 @@ function geraravaliacao(){
 
 //Função exibir avaliação do mês atual e clientes participantes
 function loadavaliacao(){
-    avaliacao.id=avaliacoes.length+1;
-    avaliacao.nps=59;
-    avaliacoes.push(avaliacao);
-
     if(vbt){
         alert("Avaliação ja Carregada!!!")
 
@@ -113,7 +166,7 @@ function loadavaliacao(){
         tabela.appendChild(avaliacaotr);
         
         
-        for(var i=0;i<5;i++){
+        for(var i=0;i<(avaliacoes[(avaliacoes.length)-1].clientes.length);i++){
             var catr=document.createElement("tr");
 
             var idctd=document.createElement("td");
@@ -122,19 +175,12 @@ function loadavaliacao(){
             var sinalizadortd=document.createElement("td");
             var tdtd=document.createElement("td");
 
-            idctd.textContent=i+3;
-            nomeclientetd.textContent="Caue";
-            contatoclientetd.textContent="Caquino";
-            sinalizadortd.textContent="Defrator";
+            idctd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].id;
+            nomeclientetd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].nomecliente;
+            contatoclientetd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].contatocliente;
+            sinalizadortd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].sinalizador;
 
-            tdtd.innerHTML+="<button type=\button\ data-toggle=\modal\ data-target=\#Modal\>Avaliar";
-
-            //idctd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].id;
-            //nomeclientetd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].nomecliente;
-            //contatoclientetd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].contatocliente;
-            //sinalizadortd.textContent=avaliacoes[avaliacoes.length-1].clientes[i].sinalizador;
-
-            //tdtd.innerHTML+="<button type=\button\ /*id="+avaliacoes[avaliacoes.length-1].clientes[i].id+"*/ data-toggle=\modal\ data-target=\#Modal\>Avaliar";
+            tdtd.innerHTML+="<button type=\button\ onclick=\catchid("+avaliacoes[avaliacoes.length-1].clientes[i].id+")\ data-toggle=\modal\ data-target=\#Modal\>Avaliar";
 
             catr.appendChild(idctd);
             catr.appendChild(nomeclientetd);
@@ -146,7 +192,6 @@ function loadavaliacao(){
 
             tabc.appendChild(catr);
         }
-
         vbt=true;
         alert("Avaliação carregada com sucesso!!!");
     }
