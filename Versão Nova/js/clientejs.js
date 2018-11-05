@@ -29,9 +29,9 @@ function cleanCadClient(){
 }
 
 //Função para verificar se contato ja existe
-function verifcontato(){
+function verifcliente(){
     for(var i=0;i<clientes.length;i++){
-        if(clientes[i].contatocliente==document.getElementById("contatoInput").value){
+        if(clientes[i].nomecliente==document.getElementById("clienteInput").value){
             return true;
         }
     }
@@ -40,15 +40,16 @@ function verifcontato(){
 
 //Função para cadastrar um cliente
 function cadCliente(){
-    if(verifcontato()){
+    if(verifcliente()){
         alert("Nome do Contato ja existe!!!");
 
     }else if(document.getElementById("clienteInput").value!="" && document.getElementById("contatoInput").value!=""){
         cliente.id=clientes.length+1;
         cliente.nomecliente=document.getElementById("clienteInput").value;
         cliente.contatocliente=document.getElementById("contatoInput").value;
+        clientes.push(cliente);
 
-        firebase.database().ref().child('clientes').push(cliente);
+        firebase.database().ref().child('clientes').update(clientes);
         alert("Cadastro Concluído com sucesso!!!");
     }
 }

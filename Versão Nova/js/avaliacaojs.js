@@ -14,8 +14,8 @@ var avaliacao={
     id: 0,
     data: [dat.getMonth(),dat.getFullYear()],
     clientes: [],
-    notas: [],
-    comentarios: [],
+    notas: [0],
+    comentarios: [0],
     nps: 0
 };
 
@@ -65,16 +65,19 @@ function saveav(){
     if(a=="" || b==""){
         alert("Campo(s) em branco!!!");
     }else{
-        for(var j=0;i<clientes.length;i++){
-            if(clientes[i].id==xca){
+        for(var j=0;j<avaliacoes[avaliacoes.length-1].clientes.length;j++){
+            if(avaliacoes[avaliacoes.length-1].clientes[j].id==xca){
                 if(a>=9){
-                    clientes[i].sinalizador="Promotores";
+                    avaliacoes[avaliacoes.length-1].clientes[j].sinalizador="Promotores";
+                    clientes[xca-1].sinalizador="Promotores";
 
                 }else if(a>=7){
-                    clientes[i].sinalizador="Neutros";
+                    avaliacoes[avaliacoes.length-1].clientes[j].sinalizador="Neutros";
+                    clientes[xca-1].sinalizador="Neutros";
 
                 }else{
-                    clientes[i].sinalizador="Detratores";
+                    cavaliacoes[avaliacoes.length-1].clientes[j].sinalizador="Detratores";
+                    clientes[xca-1].sinalizador="Detratores";
                 }
             }
         }
@@ -86,12 +89,18 @@ function saveav(){
         }
         calcnps();
 
+        firebase.database().ref('avaliacoes').update(avaliacoes);
+        firebase.database().ref('clientes').update(clientes);
+
+        alert("Mudanças salvas com sucesso!!!");
+        
         window.location.reload();
     }
 }
 
 //Função para gerar nova avaliação
 function geraravaliacao(){
+
     if(avaliacoes.length!=0 && avaliacoes[avaliacoes.length-1].data[0]==dat.getMonth() && avaliacoes[avaliacoes.length-1].data[1]==dat.getFullYear()){
         alert("Este mês ja possui uma avaliação aberta!!!");
 
@@ -100,22 +109,27 @@ function geraravaliacao(){
     
     }else{
         var nca=clientes.length/5;
-        var aux=0;
-        
-        avaliacao.id=avaliacoes.length+1;
+        var auxiliar=0;
 
-        while(aux!=nca){
-            var n=Math.floor(Math.random()*nca);
+        avaliacao.id=avaliacoes.length+1;
+        
+        while(auxiliar!=nca){
+            var n=Math.floor(Math.random()*clientes.length);
             
             if(clientes[n].dataav[0]==0 && clientes[n].dataav[1]==0 || (dat.getMonth()-clientes[n].dataav[0])>=3 && dat.getFullYear()==clientes[n].dataav[1] || (dat.getFullYear()-clientes[n].dataav[1])==1 && Clientes[n].dataav[0]-dat.getMonth<=9 || (dat.getFullYear()-clientes[n].dataav[1])>=2){
                 clientes[n].dataav[0]=dat.getMonth();
                 clientes[n].dataav[1]=dat.getFullYear();
+                
                 avaliacao.clientes.push(clientes[n]);
-                aux++;
+
+                auxiliar++;
             }
         }
+        avaliacoes.push(avaliacao);
 
-        firebase.database().ref().child('avaliacoes').push(avaliacao);
+        firebase.database().ref().child('avaliacoes').update(avaliacoes);
+        firebase.database().ref('clientes').update(clientes);
+
         alert("Avaliação gerada com sucesso!!!");
     }
 }
@@ -207,7 +221,7 @@ function loadavaliacoes(){
     
     }else{
         for(var i=0;i<avaliacoes.length;i++){
-        
+            
             var avaliacaotr=document.createElement("tr");
 
             var idtd=document.createElement("td");
@@ -217,17 +231,17 @@ function loadavaliacoes(){
             idtd.textContent=avaliacoes[i].id;
             datatd.textContent=avaliacoes[i].data[0]+"/"+avaliacoes[i].data[1];
             npstd.textContent=avaliacoes[i].nps+"%";
-
-            if(avaliacao[i].nps>=80){
+            
+            if(avaliacoes[i].nps>=80){
                 npstd.style.color="green";
 
-            }else if(avaliacao[i].nps<60){
+            }else if(avaliacoes[i].nps<60){
                 npstd.style.color="red";
                 
             }else{
                 npstd.style.color="yellow";
             }
-
+            
             avaliacaotr.appendChild(idtd);
             avaliacaotr.appendChild(datatd);
             avaliacaotr.appendChild(npstd);
